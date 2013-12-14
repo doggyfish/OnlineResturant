@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Restaurant Layout";
+}
+
+<h2>DragAndDrop</h2>
+
+@section styles {
+<style>
+    .draggabletable {
+        width: 90px;
+        height: 90px;
+        padding: 0.5em;
+        float: left;
+        margin: 0 10px 10px 0;
+        background-image: url('/Content/images/table.jpg');
+    }
+
+    .draggablechair {
+        width: 90px;
+        height: 90px;
+        padding: 0.5em;
+        float: left;
+        margin: 0 10px 10px 0;
+        background-image: url('/Content/images/chair.jpg');
+    }
+
+    #restaurant {
+        width: 90%;
+        height: 800px;
+        border: 2px solid #ccc;
+        padding: 10px;
+    }
+</style>
+}
+
+<div id="restaurant">
+    <div id="table1" class="draggabletable ui-widget-content">
+        <p>I am table one.</p>
+    </div>
+    <div id="table2" class="draggabletable ui-widget-content">
+        <p>I am table two.</p>
+    </div>
+    <div id="table3" class="draggabletable ui-widget-content">
+        <p>I am table three.</p>
+    </div>
+    <div id="table4" class="draggabletable ui-widget-content">
+        <p>I am table four.</p>
+    </div>
+
+    <div id="chair1" class="draggablechair ui-widget-content">
+        <p>I am table one.</p>
+    </div>
+    <div id="chair2" class="draggablechair ui-widget-content">
+        <p>I am table two.</p>
+    </div>
+    <div id="chair3" class="draggablechair ui-widget-content">
+        <p>I am table three.</p>
+    </div>
+    <div id="chair4" class="draggablechair ui-widget-content">
+        <p>I am table four.</p>
+    </div>
+    <div id="chair5" class="draggablechair ui-widget-content">
+        <p>I am table five.</p>
+    </div>
+    <div id="chair6" class="draggablechair ui-widget-content">
+        <p>I am table six.</p>
+    </div>
+    <div id="chair7" class="draggablechair ui-widget-content">
+        <p>I am table seven.</p>
+    </div>
+    <div id="chair8" class="draggablechair ui-widget-content">
+        <p>I am table eight.</p>
+    </div>
+    <div id="chair9" class="draggablechair ui-widget-content">
+        <p>I am table nine.</p>
+    </div>
+    <div id="chair10" class="draggablechair ui-widget-content">
+        <p>I am table ten.</p>
+    </div>
+    <div id="chair11" class="draggablechair ui-widget-content">
+        <p>I am table eleven.</p>
+    </div>
+    <div id="chair12" class="draggablechair ui-widget-content">
+        <p>I am table twilve.</p>
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script>
+        $(function () {
+            $("#table1").draggable({ containment: "#restaurant", scroll: false });
+            $("#table2").draggable({ containment: "#restaurant", scroll: false });
+            $("#table3").draggable({ containment: "#restaurant", scroll: false });
+            $("#table4").draggable({ containment: "#restaurant", scroll: false });
+
+            $("#chair1").draggable({ containment: "#restaurant", scroll: false });
+            $("#chair2").draggable({ containment: "#restaurant", scroll: false });
+            $("#chair3").draggable({ containment: "#restaurant", scroll: false });
+            $("#chair4").draggable({ containment: "#restaurant", scroll: false });
+            $("#chair5").draggable({ containment: "#restaurant", scroll: false });
+            $("#chair6").draggable({ containment: "#restaurant", scroll: false });
+            $("#chair7").draggable({ containment: "#restaurant", scroll: false });
+            $("#chair8").draggable({ containment: "#restaurant", scroll: false });
+            $("#chair9").draggable({ containment: "#restaurant", scroll: false });
+            $("#chair10").draggable({ containment: "#restaurant", scroll: false });
+            $("#chair11").draggable({ containment: "#restaurant", scroll: false });
+            $("#chair12").draggable({ containment: "#restaurant", scroll: false });
+        });
+    </script>
+}
