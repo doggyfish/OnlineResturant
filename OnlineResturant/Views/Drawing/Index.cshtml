@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Restaurant Layout";
+}
+
+<h2>DragAndDrop</h2>
+
+<div>
+    <button id="AddTable">Add Table</button>
+    <button id="AddChair">Add Chair</button>
+</div>
+
+<div>
+    @using (Html.BeginForm("SavePostion", "Drawing", FormMethod.Post, new { id = "myform" }))
+    {
+        <input id="savePosition" type="submit" value="Save" />
+    }
+</div>
+<div id="restaurant"></div>
+<input id="Postions" name="Postions" type="hidden" value="@ViewBag.Postions" />
+
+@section scripts {
+    <script>
+        var iCounter = 0;
+        var pArray;
+        $(function () {
+            pArray = $('#Postions').val().split(';');
+            $.each(pArray, function () {
+                var id = 'item' + iCounter;
+                var itemArray = this.split(',');
+
+                if (itemArray[0] == 't') {
+                    var item = '<div id="' + id +
+                        '" class="di table draggabletable ui-widget-content"><p>' +
+                        'am table' + iCounter +
+                        '</p></div>';
+                } else if (itemArray[0] == 'c') {
+                    item = '<div id="' + id +
+                        '" class="di chair draggablechair ui-widget-content"><p>' +
+                        'am chair' + iCounter +
+                        '</p></div>';
+                }
+
+                $('#restaurant').append(item);
+
+                $('#' + id).draggable({
+                    containment: "#restaurant",
+                    scroll: false
+                });
+                $('#' + id).draggable({ containment: "#restaurant", scroll: false });
+                $('#' + id).css({ 'top': itemArray[1], 'left': itemArray[2] });
+
+                iCounter++;
+            });
+
+            $('#savePosition').click(function () {
+                iCounter = 0;
+                var inputdrag = '';
+                $.each($('.di'), function () {
+                    var id = 'item' + iCounter++;
+                    var x = $('#' + id).css('top');
+                    var y = $('#' + id).css('left');
+
+                    var type = 't';
+                    if ($(this).hasClass('chair')) type = 'c';
+                    var temp = type + ',' + x + ',' + y;
+                    inputdrag += temp + ';';
+
+                });
+                var positions = '<input type="hidden" id="dragposition" name="dragposition" value="' + inputdrag + '"/>';
+
+                $('#myform').append(positions);
+
+            });
+        });
+    </script>
+}
+
+@section styles {
+    <style>
+        .draggabletable {
+            width: 90px;
+            height: 90px;
+            padding: 0.5em;
+            float: left;
+            margin: 0 10px 10px 0;
+            background-image: url('/Content/images/table.jpg');
+        }
+
+        .draggablechair {
+            width: 90px;
+            height: 90px;
+            padding: 0.5em;
+            float: left;
+            margin: 0 10px 10px 0;
+            background-image: url('/Content/images/chair.jpg');
+        }
+
+        #restaurant {
+            width: 90%;
+            height: 800px;
+            border: 2px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+}
